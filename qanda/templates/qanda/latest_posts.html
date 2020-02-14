@@ -1,0 +1,7 @@
+<ul>
+    {% for question in latest_questions %}
+
+        <a href="{{ question.get_absolute_url }}">{{question.title}}</a>
+
+    {%	endfor	%}
+</ul>

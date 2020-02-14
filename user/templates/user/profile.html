@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block body %}
+<br xmlns="http://www.w3.org/1999/html"><br>
+<center>
+<div class="container">
+{% if prof.image %}
+	<p><img class="rounded-circle" src="{{ prof.image.url }}" width="360"></p>
+{% endif %}
+
+
+    <p><var>{{ user.first_name|upper }}  {{ user.last_name|upper }}</var></p>
+    <br><br>
+    <h3>USERNAME : {{ user.username }}</h3>
+    <hr>
+     <h3>FIRST NAME : {{ user.first_name }}</h3>
+    <hr>
+     <h3>LAST NAME : {{ user.last_name }}</h3>
+    <hr>
+     <h3>EMAIL : {{ user.email }}</h3>
+    <hr>
+    <div class="card">
+        <h3>SAMMERY ABOUT YOU  </h3>
+        <p>{{ prof.bio }}</p>
+    </div>
+    <hr>
+    <button class="danger"><a href="{% url "user:edit" %}">EDIT MY PROFILE</a> </button>
+    <button class="danger"> <a href="{% url "password_change" %}">CHANGE YOUR PASSWORD</a></button>
+
+</div>
+{% endblock %}

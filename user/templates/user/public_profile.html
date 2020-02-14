@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block body %}
+<br xmlns="http://www.w3.org/1999/html"><br>
+<center>
+    <div class="container">
+        <div class="card">
+
+
+            {% if user.profile.image %}
+            <img class="rounded-circle" src="{{ user.profile.image.url }}" width="250">
+            {% else %}
+            <img class="rounded-circle" src="{{ user.profile.image.default }}" width="35">
+
+            {% endif %}
+
+
+            <hr>
+            <p><var>{{ user.first_name|upper }} {{ user.last_name|upper }}</var></p>
+            <hr>
+            <br><br>
+            <h3>USERNAME : {{ user.username }}</h3>
+            <hr>
+            <h3>EMAIL : {{ user.email }}</h3>
+            <hr>
+
+        </div>
+        <div class="card">
+            <h3>SAMMERY ABOUT YOU </h3>
+            {% if user.profile.bio %}
+            <p>{{ user.profile.bio }}</p>
+            {% else %}
+            <p>No history yet</p>
+            {% endif %}
+        </div>
+
+
+        {% endblock %}

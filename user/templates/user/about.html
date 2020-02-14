@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}ABOUT{% endblock %}
+{% block body %}
+<h1>ABOUT</h1>
+<div class="card">
+<h4>Have you ever looked for a way to solve a problem or solve a question on your mind ?
+
+ Have you ever wished if you could just ask and an expect would come to your rescue ?
+      OR
+
+ Do you feel the need to help others solve their problems ?
+ then YOU REALLY BELONG HERE!!!!!!!!!!
+</h4>
+ <p>BJQA as it's choose to be called is a questions and answers platform, where anyone can ask a question and be
+  answered by other users. This is a sort<small>stackoverflow</small> where signed in users can ask "Educational or serious questions
+ they need answers to .</p>
+<p>This is a platform where every question is taken serious and privacy is taken into count</p>
+<h3>HOW WE OPERATE</h3>
+<ul>
+ <li>BJQA is only a Question and answer platform. THIS MEANS, ONLY QUESTIONS AND ANSWERS ARE ALLOWED</li>
+ <li>You can read questions and answers of other users without signing in</li>
+ <li>In other to ask your question or answer someone else's question,
+  you must<a href="{% url "user:login" %}" >Login</a > or <a href="{% url "user:register" %}" >Register</a > if you ha no account !
+</li>
+
+ <li>Anyone who has an experience with your with your question can answer</li>
+ <li>You who asked the question has the right to accept and answer or answers that best answers your question. </li>
+ <li>if by any means you answered or solved your problem in anyway, you can also answer your own question, in other to help other with similar case.</li>
+</ul>
+</div>
+{% endblock %}

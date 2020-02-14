@@ -1,0 +1,14 @@
+{% load markdownify %}
+<div class="question" >
+  <div class="meta col-sm-12" >
+    <h1 >{{ question.title }}</h1 >
+  </div >
+</div >
+ <div class="card">
+      <div class="card-header" >
+        <var>Asked by <a href="{% url 'user:public_profile' %}">{{ question.user }}</a> on {{ question.created }}</var>
+      </div >
+      <div class="card-body" >
+         {{ question.question|markdownify }}
+      </div >
+ </div >

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load qanda_tags %}
+{% block title %} Questions on {{ day }} {% endblock %}
+
+{% block body %}
+
+  <div class="col-sm-12" >
+    <h1 >Questions on {{ day }}</h1 >
+    <hr>
+
+    <ul >
+      {% for question in object_list %}
+      <div class="card question-preview" >
+        <div class="card-header" >
+          <var>
+               <h5> Asked by {{ question.user }} on {{ question.created }}</h5>
+        </div >
+        <div class="card-body" >
+          <h3 class="card-title" > {{ question.votes }}
+            <a href="{{ question.get_absolute_url }}" >
+              {{ question }}
+            </a ></h3>
+         {{ question.question|truncatewords_html:15  }}
+        </div >
+      </div >
+      {% empty %}
+        <li><p>Hmm... It seems anyone doesn't have a problem this day</p></li>
+      {% endfor %}
+    </ul >
+    <hr>
+    <div>
+      {% if previous_day %}
+        <a href="{% url "qanda:daily_questions" year=previous_day.year month=previous_day.month day=previous_day.day %}" >
+           << Previous Day :
+        </a >
+      {% endif %}
+      {% if next_day %}
+        <a href="{% url "qanda:daily_questions" year=next_day.year month=next_day.month day=next_day.day %}" >
+          Next Day >>
+        </a >
+      {% endif %}
+    </div >
+  </div >
+
+
+
+
+<a href="{{ question.get_absolute_url }}">{{question.title}}</a>
+
+{% endblock %}
