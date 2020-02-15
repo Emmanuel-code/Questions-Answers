@@ -5,13 +5,27 @@
 
 {% block body %}
 <div class="container">
-    <p>       No search results for your input</p>
- <p> If you can't find what you looking for </P>
 
-    <h3>Please feel free to ask your question </h3>
+<h1>RESULTS OF YOUR SEARCH</h1>
+
+    {% if questions %}
+    <ul>
+    {% for t in questions %}
+       <li> <a href="{{ t.get_absolute_url }}" >
+              {{ t.title }}
+        </a ></li>
+    <p>{{ t.question|truncatewords_html:15  }}</p>
+
+    {% endfor %}
+    </ul>
+    {% else %}
+    <p>       No search results for your input</p>
+    {% endif %}
 </div>
 
-
+<small>Please if you can't find what you looking for,
+feel free to  <a href="{% url "qanda:ask" %}" >Ask</a >
+</small>
 
 
 

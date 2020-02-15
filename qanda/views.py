@@ -14,24 +14,20 @@ from django.shortcuts import render
 from .forms import QuestionForm, AnswerForm, AnswerAcceptanceForm,CommentForm
 from .models import Question, Answer,Comment
 from django.db.models import Q
+# import request
+# from bs4 import BeautifulSoup
 
 
 
 
 def search_questions(request):
-    query=""
-    if request.GET:
-        query=request.GET['q']
-        queryset=[]
-        queries=query.split(" ")
-        for q in queries:
-            questions=Question.objects.filter(Q(title__icontains=q) |
-                                             Q(question__icontains=q)
-                                             ).distinct()
-            for ques in questions:
-                queryset.append(ques)
+    query=request.GET.get('q')
 
-        return render(request,'qanda/search.html')
+    questions=Question.objects.filter(Q(title__icontains=query) |
+                                              Q(question__icontains=query)
+                                                ).distinct()
+
+    return render(request,'qanda/search.html',{'questions':questions})
 
 
 class AskQuestionView(LoginRequiredMixin, CreateView):
@@ -193,3 +189,4 @@ class QuestionListView(ListView):
     context_object_name = 'questions'
     template_name = 'qanda/all.html'
     paginate_by = 3
+
