@@ -5,10 +5,14 @@
 
 <h1>ALL QUESTIONS</h1>
     {%	for	question	in	object_list	%}
-                <h2><a	href="{{question.get_absolute_url}}">{{	question.title	}}</a></h2>
+<hr>
+<ul>
+               <li> <h2><a	href="{{question.get_absolute_url}}">{{	question.title	}}</a></h2></li>
+                     <p>{{ question.question|truncatewords_html:15  }}</p>
+</ul>
     {%	endfor	%}
 
-
+<hr>
 {% include "pagination.html" with page=page_obj %}
 
 

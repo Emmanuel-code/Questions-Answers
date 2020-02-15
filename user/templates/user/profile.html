@@ -21,7 +21,12 @@
     <hr>
     <div class="card">
         <h3>SAMMERY ABOUT YOU  </h3>
+        <hr>
+        {% if prof.bio %}
         <p>{{ prof.bio }}</p>
+        {% else %}
+        <P>Please let people know some thing about you</P>
+        {% endif %}
     </div>
     <hr>
     <button class="danger"><a href="{% url "user:edit" %}">EDIT MY PROFILE</a> </button>
