@@ -16,17 +16,15 @@
 
 
             <hr>
-            <p><var>{{ user.first_name|upper }} {{ user.last_name|upper }}</var></p>
+            <p><var>{{ user.username|upper }} {{ user.last_name|upper }}</var></p>
             <hr>
             <br><br>
-            <h3>USERNAME : {{ user.username }}</h3>
-            <hr>
-            <h3>EMAIL : {{ user.email }}</h3>
-            <hr>
+
+
 
         </div>
         <div class="card">
-            <h3>SAMMERY ABOUT YOU </h3>
+            <h3>BIO </h3>
             {% if user.profile.bio %}
             <p>{{ user.profile.bio }}</p>
             {% else %}

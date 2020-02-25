@@ -1,16 +1,18 @@
+{% load social_share %}
 {% load markdownify %}
 
 
  <div class="card" >
         <div class="card-header" >
           <var>
-            <h5 >Answers</h5 >
+
+            <h5 >Answers {{ forloop.counter }}</h5 >
         </div >
         <div class="card-body" >
           <ul class="list-unstyled answers" >
               {% for answer in question.answer_set.all %}
                 <li class="answer row" >
-                  <div class="col-sm-3 col-md-2 text-center" >
+                  <div class="col-sm-3 col-md-2 text-center" style="background:orange;" >
                     {% if answer.accepted %}
                       <span class="badge badge-pill badge-success" >Accepted</span >
                     {% endif %}
@@ -36,19 +38,34 @@
                       </form >
                     {% endif %}
                   </div >
+
                   <div class="col-sm-9 col-md-10" >
                     <div class="body" >{{ answer.answer|markdownify }}</div >
+
                     <hr>
                     <div class="meta font-weight-light" >
                         <var> Answered by <a href="{% url 'user:public_profile' %}">{{ answer.user }}</a> on {{ answer.created }}</var>
                     </div>
-                    <hr style="border:4px solid ;background-blue">
-<br><br>
+                    <hr style="border:2px solid ;background:blue;">
+<br>
+
+
+
                   </div >
                 </li >
               {% empty %}
                 <li class="answer" >No answers yet!</li >
               {% endfor %}
+
 </ul >
+            {{ quote }}
+
         </div >
       </div >
+<ul>
+  <li> {% post_to_facebook question.get_absolute_url %}</li>
+    <li>{% post_to_whatsapp object_or_url "Share via WhatsApp" %}
+</li>
+    <li>{% send_email object.title "New Song: {{object.title}}. Check it out!" object_or_url "Share via email" %}
+    </li>
+</ul>

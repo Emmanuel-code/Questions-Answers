@@ -4,9 +4,14 @@
 {% extends "base.html" %}
 
 {% block body %}
+<br>
 <div class="container">
+<form action="." method="get" value="{{ request.GET.q }}"  >
+    <input id="q" name="q" class="form-control mr-sm-2" type="text" placeholder="Search..." aria-label="Search">
 
-<h1>RESULTS OF YOUR SEARCH</h1>
+</form>
+<br><br><h1>RESULTS OF YOUR SEARCH</h1>
+   <hr>
 
     {% if questions %}
     <ul>

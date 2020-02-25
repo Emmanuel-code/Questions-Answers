@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['a02550be.ngrok.io', 'localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'django_social_share',
     'user',
     'qanda',
 

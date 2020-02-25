@@ -19,6 +19,6 @@ urlpatterns = [
     path('a/<int:pk>/accept', views.UpdateAnswerAcceptanceView.as_view(),
          name='update_answer_acceptance'),
     path('search_questions/',views.search_questions,name='search_questions'),
-    path('comments/',views.CreateComment.as_view(),name='comment'),
     path('all/',views.QuestionListView.as_view(),name='all_questions'),
+
 ]

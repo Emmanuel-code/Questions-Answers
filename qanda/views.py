@@ -11,18 +11,15 @@ from django.views.generic import (
     ListView
 )
 from django.shortcuts import render
-from .forms import QuestionForm, AnswerForm, AnswerAcceptanceForm,CommentForm
-from .models import Question, Answer,Comment
+from .forms import QuestionForm, AnswerForm, AnswerAcceptanceForm
+from .models import Question, Answer
 from django.db.models import Q
-# import request
-# from bs4 import BeautifulSoup
 
 
 
 
 def search_questions(request):
     query=request.GET.get('q')
-
     questions=Question.objects.filter(Q(title__icontains=query) |
                                               Q(question__icontains=query)
                                                 ).distinct()
@@ -137,51 +134,7 @@ class UpdateAnswerAcceptanceView(LoginRequiredMixin, UpdateView):
         return HttpResponseRedirect(
             redirect_to=self.object.question.get_absolute_url())
 
-#
-# def comment_view(request):
-#
-#     new_comment = None
-#     if request.method == 'POST':
-#         # A comment was posted
-#         comment_form = CommentForm(data=request.POST)
-#         if comment_form.is_valid():
-#             # Create Comment object but don't save to database yet
-#             new_comment = comment_form.save(commit=False)
-#             # Assign the current post to the comment
-#             new_comment.post = post
-#             # Save the comment to the database
-#             new_comment.save()
-#     else:
-#         comment_form = CommentForm()
-#     return render(request,'qanda/comment.html',{ 'new_comment': new_comment,'comment_form': comment_form})
-#
-#
-class CreateComment(CreateView):
-    form_class = CommentForm
-    template_name = 'qanda/comment.html'
 
-    def get_initial(self):
-        return {
-            'answer': self.get_answer().id,
-            'user': self.request.user.id,
-        }
-
-    def get_context_data(self, **kwargs):
-        return super().get_context_data(answer=self.get_answer(),
-                                        **kwargs)
-
-    def form_valid(self, form):
-        action = self.request.POST.get('action')
-        if action == 'SAVE':
-            # save and redirect as usual.
-            return super().form_valid(form)
-        elif action == 'PREVIEW':
-            ctx = self.get_context_data(preview=form.cleaned_data['answer'])
-            return self.render_to_response(context=ctx)
-        return HttpResponseBadRequest()
-
-    def get_answer(self):
-        return Answer(self.kwargs['pk'])
 
 
 class QuestionListView(ListView):
@@ -189,4 +142,6 @@ class QuestionListView(ListView):
     context_object_name = 'questions'
     template_name = 'qanda/all.html'
     paginate_by = 3
+
+
 
