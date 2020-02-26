@@ -1,4 +1,4 @@
-{% load social_share %}
+
 {% load markdownify %}
 
 
@@ -58,14 +58,7 @@
               {% endfor %}
 
 </ul >
-            {{ quote }}
 
         </div >
       </div >
-<ul>
-  <li> {% post_to_facebook question.get_absolute_url %}</li>
-    <li>{% post_to_whatsapp object_or_url "Share via WhatsApp" %}
-</li>
-    <li>{% send_email object.title "New Song: {{object.title}}. Check it out!" object_or_url "Share via email" %}
-    </li>
-</ul>
+
