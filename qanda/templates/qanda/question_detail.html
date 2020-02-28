@@ -9,17 +9,18 @@
 <br>
     {% include "qanda/common/post_answer.html" %}
 <br><br><br><br><br>
-<div style="background:#e83e8c;;">
+<div style="background:#20c997;">
     <h4>share to others!!!</h4>
     <div class="row" style="padding:20px;">
-        <h5>{% post_to_facebook question.title %}||
-            {% post_to_whatsapp question.title "Share via WhatsApp" %} ||
+        <h5>{% post_to_facebook question.title %}
+            {% post_to_whatsapp question.title "Share via WhatsApp" %}
             {% send_email question.title "Please visit this to help with: {{question.title}}. Check it out!" object_or_url "Share via email" %}
         </h5>
     </div>
 </div>
 
-  {% else %}
-    <div >Login to post answers.</div >
+
+
+
   {% endif %}
 {% endblock %}

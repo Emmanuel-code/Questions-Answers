@@ -25,13 +25,14 @@ SECRET_KEY = '*)(q)4xkia=jwc6her!#7xhohtra)p(cmg1bxblb&@$n-n&pvb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['a02550be.ngrok.io', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['82e09414.ngrok.io', 'localhost', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'django_social_share',
+
     'user',
     'qanda',
 
